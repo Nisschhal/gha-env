@@ -4,7 +4,14 @@ on:
     branches:
       - main
       - dev
+env:
+  MONGODB_DB_NAME: demo-db
 jobs:
+  env:
+    MONGODB_CLUSTER_ADDRESS: cluster0.zotmmmu.mongodb.net
+    MONGODB_PASSWORD: 0IUkYFedgtqpXWpQ
+    PORT: 8080
+
   test:
     environment: testing
     runs-on: ubuntu-latest
@@ -29,5 +36,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "..."
