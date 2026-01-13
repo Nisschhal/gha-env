@@ -7,13 +7,14 @@ on:
 env:
   MONGODB_DB_NAME: demo-db
   MONGODB_CLUSTER_ADDRESS: ${{ vars.MONGODB_CLUSTER_ADDRESS }}
-  MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-  MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
   PORT: 8080
 
 jobs:
   test:
     environment: testing
+    env:
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
