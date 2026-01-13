@@ -11,9 +11,12 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.zotmmmu.mongodb.net
+      MONGODB_USERNAME: ramu
       MONGODB_PASSWORD: 0IUkYFedgtqpXWpQ
       PORT: 8080
+    environment: testing
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     steps:
       - name: Get Code
         uses: actions/checkout@v3
@@ -25,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT --timeout 60000
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test
       - name: Output information
